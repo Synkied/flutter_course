@@ -7,7 +7,7 @@ const startAlignment = Alignment.topLeft;
 class GradientContainer extends StatelessWidget {
   final List<Color> colors;
 
-  GradientContainer({super.key, required this.colors});
+  const GradientContainer({super.key, required this.colors});
 
   GradientContainer.purple({super.key})
       : colors = [
