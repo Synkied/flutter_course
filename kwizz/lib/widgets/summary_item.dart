@@ -18,6 +18,7 @@ class SummaryItem extends StatelessWidget {
   @override
   Widget build(context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircleAvatar(
           backgroundColor: answerColor(data),
