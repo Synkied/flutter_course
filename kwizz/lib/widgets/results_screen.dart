@@ -10,9 +10,25 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen(
       {super.key, required this.chosenAnswers, required this.startQuiz});
 
+  List<Map<String, Object>> get summaryData {
+    final List<Map<String, Object>> summary = [];
+
+    for (var i = 0; i < chosenAnswers.length; i++) {
+      summary.add(
+        {
+          "question_idx": i,
+          "question": questions[i].text,
+          "correct_answer": questions[i].answers[0],
+          "chosen_answer": chosenAnswers[i],
+        },
+      );
+    }
+
+    return summary;
+  }
+
   @override
   Widget build(context) {
-    final summaryData = getSummaryData();
     final numTotalQuestions = questions.length;
     final numCorrectAnswers = summaryData.where((data) {
       return data["correct_answer"] == data["chosen_answer"];
@@ -48,22 +64,5 @@ class ResultsScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  List<Map<String, Object>> getSummaryData() {
-    final List<Map<String, Object>> summary = [];
-
-    for (var i = 0; i < chosenAnswers.length; i++) {
-      summary.add(
-        {
-          "question_idx": i,
-          "question": questions[i].text,
-          "correct_answer": questions[i].answers[0],
-          "chosen_answer": chosenAnswers[i],
-        },
-      );
-    }
-
-    return summary;
   }
 }
