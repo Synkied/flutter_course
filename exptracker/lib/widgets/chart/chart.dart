@@ -1,12 +1,11 @@
+import 'package:exptracker/models/expense.dart';
+import 'package:exptracker/widgets/chart/chart_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'package:exptracker/widgets/chart/chart_bar.dart';
-import 'package:exptracker/models/expense.dart';
-
 class Chart extends StatelessWidget {
-  const Chart({super.key, required this.expenses});
-
   final List<Expense> expenses;
+
+  const Chart({super.key, required this.expenses});
 
   List<ExpenseBucket> get buckets {
     return [
@@ -34,6 +33,7 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.symmetric(
