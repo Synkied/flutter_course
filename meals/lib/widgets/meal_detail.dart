@@ -11,7 +11,15 @@ class MealDetail extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Image.network(meal.imageUrl),
+          Hero(
+            tag: meal.id,
+            child: Image.network(
+              meal.imageUrl,
+              fit: BoxFit.cover,
+              height: 300,
+              width: double.infinity,
+            ),
+          ),
           Text(
             'Ingredients',
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
