@@ -15,6 +15,13 @@ class GroceryItemsNotifier extends StateNotifier<GroceriesList> {
     return true;
   }
 
+  bool insertGroceryItem(GroceryItem grocery, int index) {
+    List begin = state.sublist(0, index);
+    List end = state.sublist(index);
+    state = [...begin, grocery, ...end];
+    return true;
+  }
+
   bool removeGroceryItem(GroceryItem grocery) {
     state = state.where((gi) => gi.id != grocery.id).toList();
     return false;
